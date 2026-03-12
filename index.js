@@ -16,6 +16,10 @@ app.set('views', path.join(__dirname,"views"))
 //Thiết lập view engine
 app.set('view engine', 'pug')
 
+//Thiết lập thư mục chứa file tĩnh
+app.use(express.static(path.join(__dirname,"public")))
+
+
 //get để lấy ra gì đó ?  '/' là đại diện cho trang chủ. 
 //Thay bằng render để chuyển pug thành html rồi render ra giao diện
 //biến req là dữ liệu fe gửi lên be
@@ -31,7 +35,6 @@ app.get('/tours', (req, res) => {
     pageTitle: "Danh sách tour"
   })
 })
-
 
 app.listen(port, () => {
   console.log(`Website đang chạy trên cổng ${port}`)
