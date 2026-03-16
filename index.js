@@ -4,9 +4,9 @@ const express = require('express')
 const path = require('path')
 //nhung thu vien mongoose
 const mongoose = require('mongoose');
-const homeController = require('./controllers/client/home.controller')
-const tourController = require('./controllers/client/tour.controller')
+
 require('dotenv').config();
+const clientRoutes = require("./routes/client/index.route")
 //khởi tạo dự án app express()
 const app = express()
 //tên cổng
@@ -19,12 +19,9 @@ app.set('views', path.join(__dirname,"views"))
 app.set('view engine', 'pug')
 //Thiết lập thư mục chứa file tĩnh
 app.use(express.static(path.join(__dirname,"public")))
-//get để lấy ra gì đó ?  '/' là đại diện cho trang chủ. 
-//Thay bằng render để chuyển pug thành html rồi render ra giao diện
-//biến req là dữ liệu fe gửi lên be
-//res là dữ liệu be phản hồi về cho fe
-app.get('/', homeController.home)
-app.get('/tours', tourController.list)
+
+app.use("/",clientRoutes)
+
 app.listen(port, () => {
   console.log(`Website đang chạy trên cổng ${port}`)
 })
