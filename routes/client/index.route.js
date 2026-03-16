@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const tourRoutes = require("../../routes/client/tour.route");
-const homeRoutes = require("../../routes/client/home.route");
+const tourRoutes = require("./tour.route");
+const homeRoutes = require("./home.route");
 
 router.use('/', homeRoutes)
 router.use('/tours', tourRoutes)
