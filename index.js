@@ -5,6 +5,7 @@ const express = require('express')
 const path = require('path')
 //nhung thu vien mongoose
 const mongoose = require('mongoose');
+const Tour = require('./models/tour.model');
 
 require('dotenv').config();
 
@@ -17,14 +18,6 @@ const port = 3000
 //ket noi csdl
 mongoose.connect(process.env.DATABASE);
 
-const Tour = mongoose.model(
-  'Tour', 
-  { 
-    name: String,
-    vehicle : String
-  },
-  'tours'
-);
 
 //Thiết lập cho dự án biết thư mục chứa code cho phần giao diện views
 app.set('views', path.join(__dirname,"views"))
@@ -61,7 +54,3 @@ app.listen(port, () => {
   console.log(`Website đang chạy trên cổng ${port}`)
 })
 
-
-
-//drstone9669_db_user
-//Q4fkDUqPVQgu0g41
