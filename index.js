@@ -2,17 +2,17 @@
 const express = require('express')
 //nhúng thư viện path có sẵn trong nodejs
 const path = require('path')
-//nhung thu vien mongoose
-const mongoose = require('mongoose');
 
 require('dotenv').config();
+
+const databaseConfig = require("./config/database.config");
 const clientRoutes = require("./routes/client/index.route")
 //khởi tạo dự án app express()
 const app = express()
 //tên cổng
 const port = 3000
-//ket noi csdl
-mongoose.connect(process.env.DATABASE);
+//Kết nối csdl
+databaseConfig.connect();
 //Thiết lập cho dự án biết thư mục chứa code cho phần giao diện views
 app.set('views', path.join(__dirname,"views"))
 //Thiết lập view engine
